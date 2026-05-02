@@ -82,68 +82,99 @@ nav.scrolled{padding:.75rem 4rem;background:rgba(2,8,23,.95)}
 section{position:relative;z-index:2}
 
 /* ══════════════════════════════════════════
-   HERO
+   HERO  — 2-COLUMN
 ══════════════════════════════════════════ */
-#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:10rem 4rem 6rem;text-align:center;position:relative;overflow:hidden}
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8rem 4rem 4rem;position:relative;overflow:hidden}
 
-/* giant background name watermark */
 .hero-bg-name{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Orbitron',monospace;font-size:clamp(5rem,16vw,18rem);font-weight:900;color:transparent;-webkit-text-stroke:1px rgba(0,245,255,.04);white-space:nowrap;pointer-events:none;z-index:0;letter-spacing:.05em;animation:bg-drift 20s ease-in-out infinite}
 @keyframes bg-drift{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.03)}}
 
-.hero-content{position:relative;z-index:2;max-width:1000px;width:100%}
+/* 2-col wrapper */
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;width:100%;position:relative;z-index:2}
+
+/* LEFT — text */
+.hero-content{text-align:left}
 
 /* AVAILABLE badge */
-.hero-avail{display:inline-flex;align-items:center;gap:.6rem;padding:.45rem 1.2rem;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.25);font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--c3);letter-spacing:2px;text-transform:uppercase;margin-bottom:2rem;animation:avail-pulse 2.5s ease-in-out infinite;opacity:0;transition:opacity .5s .3s}
+.hero-avail{display:inline-flex;align-items:center;gap:.6rem;padding:.45rem 1.2rem;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.25);font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--c3);letter-spacing:2px;text-transform:uppercase;margin-bottom:1.8rem;animation:avail-pulse 2.5s ease-in-out infinite;opacity:0;transition:opacity .5s .3s}
 .hero-avail.in{opacity:1}
 @keyframes avail-pulse{0%,100%{border-color:rgba(16,185,129,.25);box-shadow:none}50%{border-color:rgba(16,185,129,.6);box-shadow:0 0 20px rgba(16,185,129,.15)}}
 .avail-dot{width:7px;height:7px;border-radius:50%;background:var(--c3);animation:blink .9s infinite}
 @keyframes blink{0%,100%{opacity:1;box-shadow:0 0 8px var(--c3)}50%{opacity:.3;box-shadow:none}}
 
 /* THE BIG NAME */
-.hero-name-wrap{margin-bottom:1.5rem;line-height:1;overflow:visible}
-.hero-name{font-family:'Orbitron',monospace;font-size:clamp(3rem,9vw,9rem);font-weight:900;letter-spacing:-.01em;display:block;position:relative}
-.name-harsh{display:block;background:linear-gradient(135deg,#ffffff 0%,#c7f9ff 40%,var(--c) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;text-shadow:none;filter:drop-shadow(0 0 40px rgba(0,245,255,.35))}
+.hero-name-wrap{margin-bottom:1.2rem;line-height:1.05;overflow:visible}
+.hero-name{font-family:'Orbitron',monospace;font-size:clamp(2.8rem,6vw,6.5rem);font-weight:900;letter-spacing:-.01em;display:block}
+.name-harsh{display:block;background:linear-gradient(135deg,#ffffff 0%,#c7f9ff 40%,var(--c) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 40px rgba(0,245,255,.35))}
 .name-chaudhary{display:block;background:linear-gradient(135deg,var(--c2) 0%,#c084fc 50%,#ffffff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;filter:drop-shadow(0 0 40px rgba(124,58,237,.35))}
-/* split letter animation */
-.sl{display:inline-block;opacity:0;transform:translateY(80px) rotateX(90deg);transition:opacity .6s,transform .6s;transform-origin:bottom}
+.sl{display:inline-block;opacity:0;transform:translateY(70px) rotateX(90deg);transition:opacity .6s,transform .6s;transform-origin:bottom}
 .sl.in{opacity:1;transform:translateY(0) rotateX(0)}
 
-/* role line */
-.hero-role{font-family:'JetBrains Mono',monospace;font-size:clamp(1rem,2vw,1.4rem);color:var(--c3);letter-spacing:2px;margin-bottom:1.5rem;opacity:0;transform:translateY(20px);transition:opacity .5s .6s,transform .5s .6s;min-height:2rem}
+.hero-role{font-family:'JetBrains Mono',monospace;font-size:clamp(.85rem,1.5vw,1.1rem);color:var(--c3);letter-spacing:2px;margin-bottom:1.2rem;opacity:0;transform:translateY(20px);transition:opacity .5s .6s,transform .5s .6s;min-height:1.8rem}
 .hero-role.in{opacity:1;transform:translateY(0)}
 #tw::after{content:'▋';animation:blink .7s infinite;color:var(--c)}
 
-/* tagline */
-.hero-tag{font-size:clamp(.9rem,1.5vw,1.15rem);color:var(--muted);max-width:620px;margin:0 auto 2.5rem;line-height:1.85;opacity:0;transform:translateY(20px);transition:opacity .5s .8s,transform .5s .8s}
+.hero-tag{font-size:clamp(.85rem,1.2vw,1rem);color:var(--muted);max-width:480px;margin:0 0 2rem;line-height:1.85;opacity:0;transform:translateY(20px);transition:opacity .5s .8s,transform .5s .8s}
 .hero-tag.in{opacity:1;transform:translateY(0)}
 .hero-tag strong{color:var(--text)}
 
-/* CTA */
-.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .5s 1s,transform .5s 1s}
+.hero-cta{display:flex;gap:.85rem;flex-wrap:wrap;opacity:0;transform:translateY(20px);transition:opacity .5s 1s,transform .5s 1s}
 .hero-cta.in{opacity:1;transform:translateY(0)}
-.btn-p{padding:.9rem 2.5rem;background:linear-gradient(135deg,var(--c),var(--c2));color:#000;font-weight:900;font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:1.5px;border:none;cursor:none;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));transition:box-shadow .3s,filter .3s;position:relative;overflow:hidden}
+.btn-p{padding:.85rem 2rem;background:linear-gradient(135deg,var(--c),var(--c2));color:#000;font-weight:900;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:1.5px;border:none;cursor:none;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));transition:box-shadow .3s,filter .3s;position:relative;overflow:hidden}
 .btn-p::after{content:'';position:absolute;inset:0;background:rgba(255,255,255,.15);opacity:0;transition:opacity .3s}
 .btn-p:hover{box-shadow:0 10px 40px rgba(0,245,255,.5);filter:brightness(1.1)}
 .btn-p:hover::after{opacity:1}
-.btn-o{padding:.9rem 2.5rem;background:transparent;color:var(--text);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:.82rem;letter-spacing:1.5px;border:1px solid rgba(255,255,255,.2);cursor:none;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));transition:all .35s;position:relative;overflow:hidden}
+.btn-o{padding:.85rem 2rem;background:transparent;color:var(--text);font-weight:600;font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:1.5px;border:1px solid rgba(255,255,255,.2);cursor:none;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem;clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,12px 100%,0 calc(100% - 12px));transition:all .35s;position:relative;overflow:hidden}
 .btn-o::before{content:'';position:absolute;inset:0;background:rgba(255,255,255,.05);opacity:0;transition:opacity .3s}
 .btn-o:hover{border-color:var(--c);color:var(--c);box-shadow:var(--glow)}
 .btn-o:hover::before{opacity:1}
 
-/* stats row */
-.hero-stats{display:flex;gap:3rem;justify-content:center;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);opacity:0;transform:translateY(20px);transition:opacity .5s 1.2s,transform .5s 1.2s}
+.hero-stats{display:flex;gap:2rem;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--border);opacity:0;transform:translateY(20px);transition:opacity .5s 1.2s,transform .5s 1.2s}
 .hero-stats.in{opacity:1;transform:translateY(0)}
-.stat{text-align:center}
-.stat-n{font-family:'Orbitron',monospace;font-size:2.5rem;font-weight:900;color:var(--c);line-height:1;filter:drop-shadow(0 0 15px rgba(0,245,255,.4))}
-.stat-l{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:var(--muted);margin-top:.5rem;letter-spacing:2px;text-transform:uppercase}
+.stat{text-align:left}
+.stat-n{font-family:'Orbitron',monospace;font-size:2rem;font-weight:900;color:var(--c);line-height:1;filter:drop-shadow(0 0 12px rgba(0,245,255,.4))}
+.stat-l{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);margin-top:.4rem;letter-spacing:1px;text-transform:uppercase}
+
+/* RIGHT — holographic orb */
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:520px;opacity:0;transform:scale(.85);transition:opacity .8s .5s,transform .8s .5s}
+.hero-visual.in{opacity:1;transform:scale(1)}
+/* big canvas for orb */
+#orb-canvas{width:100%;height:100%;position:absolute;inset:0}
+/* floating skill chips around orb */
+.skill-orbit{position:absolute;inset:0;pointer-events:none}
+.orb-chip{position:absolute;padding:.35rem .85rem;background:rgba(2,8,23,.9);border:1px solid;font-family:'JetBrains Mono',monospace;font-size:.62rem;border-radius:20px;white-space:nowrap;transform:translate(-50%,-50%);animation:chip-float ease-in-out infinite}
+.orb-chip:nth-child(1){top:12%;left:78%;border-color:rgba(0,245,255,.4);color:var(--c);animation-duration:6s;animation-delay:0s}
+.orb-chip:nth-child(2){top:30%;left:88%;border-color:rgba(124,58,237,.4);color:#c084fc;animation-duration:7s;animation-delay:-2s}
+.orb-chip:nth-child(3){top:70%;left:85%;border-color:rgba(16,185,129,.4);color:var(--c3);animation-duration:8s;animation-delay:-4s}
+.orb-chip:nth-child(4){top:88%;left:55%;border-color:rgba(245,158,11,.4);color:var(--c4);animation-duration:6.5s;animation-delay:-1s}
+.orb-chip:nth-child(5){top:75%;left:18%;border-color:rgba(0,245,255,.35);color:var(--c);animation-duration:7.5s;animation-delay:-3s}
+.orb-chip:nth-child(6){top:45%;left:8%;border-color:rgba(124,58,237,.35);color:#c084fc;animation-duration:9s;animation-delay:-5s}
+.orb-chip:nth-child(7){top:18%;left:20%;border-color:rgba(16,185,129,.35);color:var(--c3);animation-duration:7s;animation-delay:-2.5s}
+.orb-chip:nth-child(8){top:5%;left:48%;border-color:rgba(245,158,11,.35);color:var(--c4);animation-duration:6s;animation-delay:-1.5s}
+@keyframes chip-float{0%,100%{transform:translate(-50%,-50%) translateY(0) scale(1)}50%{transform:translate(-50%,-50%) translateY(-10px) scale(1.05)}}
+
+/* center orb glow layer */
+.orb-glow-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,rgba(0,245,255,.18) 0%,rgba(124,58,237,.12) 40%,transparent 70%);animation:orb-pulse 3s ease-in-out infinite;pointer-events:none}
+@keyframes orb-pulse{0%,100%{transform:translate(-50%,-50%) scale(1);box-shadow:0 0 60px rgba(0,245,255,.2)}50%{transform:translate(-50%,-50%) scale(1.1);box-shadow:0 0 100px rgba(0,245,255,.35)}}
 
 /* scroll hint */
-.hero-scroll{position:absolute;bottom:3rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;animation:s-bounce 2s ease-in-out infinite}
+.hero-scroll{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;animation:s-bounce 2s ease-in-out infinite;z-index:3}
 .hero-scroll-mouse{width:20px;height:32px;border:1.5px solid rgba(100,116,139,.4);border-radius:10px;display:flex;justify-content:center;padding-top:5px}
 .hero-scroll-dot{width:2px;height:6px;background:var(--c);border-radius:2px;animation:s-dot 1.5s ease-in-out infinite}
 @keyframes s-dot{0%{transform:translateY(0);opacity:1}100%{transform:translateY(8px);opacity:0}}
 @keyframes s-bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-6px)}}
 .hero-scroll-label{font-family:'JetBrains Mono',monospace;font-size:.55rem;color:var(--muted);letter-spacing:3px}
+
+/* RESPONSIVE hero */
+@media(max-width:900px){
+  .hero-inner{grid-template-columns:1fr;gap:2rem}
+  .hero-content{text-align:center}
+  .hero-tag{max-width:100%;margin:0 auto 2rem}
+  .hero-cta{justify-content:center}
+  .hero-stats{justify-content:center}
+  .stat{text-align:center}
+  .hero-visual{height:320px}
+}
 
 /* ══════════════════════════════════════════
    BENTO — WHAT I BUILD
@@ -491,50 +522,69 @@ footer .fn{color:var(--c);font-weight:700}
 
 <!-- ════════ HERO ════════ -->
 <section id="hero">
-  <!-- 3D objects -->
-  <div class="cube-scene"><div class="cube">
-    <div class="cf fr">AI</div><div class="cf bk">ML</div>
-    <div class="cf lt">DL</div><div class="cf rt">CV</div>
-    <div class="cf tp">NLP</div><div class="cf bt">IoT</div>
-  </div></div>
-  <div class="tri-scene"><div class="tri"></div></div>
-  <div class="ring-scene"><div class="ring"></div></div>
-
-  <!-- giant bg watermark name -->
   <div class="hero-bg-name" aria-hidden="true">HARSH</div>
 
-  <div class="hero-content">
-    <div class="hero-avail" id="h-avail"><span class="avail-dot"></span>Available for Opportunities · Class of 2026</div>
+  <div class="hero-inner">
 
-    <div class="hero-name-wrap">
-      <span class="hero-name">
-        <span class="name-harsh" id="nm-harsh"></span>
-        <span class="name-chaudhary" id="nm-chaud"></span>
-      </span>
+    <!-- LEFT: text -->
+    <div class="hero-content">
+      <div class="hero-avail" id="h-avail"><span class="avail-dot"></span>Available for Opportunities · Class of 2026</div>
+
+      <div class="hero-name-wrap">
+        <span class="hero-name">
+          <span class="name-harsh"  id="nm-harsh"></span>
+          <span class="name-chaudhary" id="nm-chaud"></span>
+        </span>
+      </div>
+
+      <p class="hero-role" id="h-role"><span id="tw"></span></p>
+
+      <p class="hero-tag" id="h-tag">
+        AI-focused CS undergraduate crafting <strong>real-world intelligent systems</strong> from idea to deployment —
+        across finance, healthcare, computer vision &amp; IoT.
+      </p>
+
+      <div class="hero-cta" id="h-cta">
+        <a href="#projects" class="btn-p" data-mag>🚀 See My Work</a>
+        <a href="#contact"  class="btn-o" data-mag>💬 Let's Talk</a>
+        <a href="https://github.com/harsh0015c" target="_blank" class="btn-o" data-mag>🐙 GitHub</a>
+      </div>
+
+      <div class="hero-stats" id="h-stats">
+        <div class="stat"><div class="stat-n"><span class="cnt" data-t="6">0</span>+</div><div class="stat-l">AI Projects</div></div>
+        <div class="stat"><div class="stat-n"><span class="cnt" data-t="10">0</span>+</div><div class="stat-l">Certifications</div></div>
+        <div class="stat"><div class="stat-n"><span class="cnt" data-t="25">0</span>%</div><div class="stat-l">Efficiency Gains</div></div>
+        <div class="stat"><div class="stat-n"><span class="cnt" data-t="15">0</span>%</div><div class="stat-l">Pipeline Speed-up</div></div>
+      </div>
     </div>
 
-    <p class="hero-role" id="h-role"><span id="tw"></span></p>
+    <!-- RIGHT: holographic AI orb -->
+    <div class="hero-visual" id="h-visual">
+      <!-- WebGL-style orb drawn on canvas -->
+      <canvas id="orb-canvas"></canvas>
 
-    <p class="hero-tag" id="h-tag">
-      AI-focused CS undergraduate crafting <strong>real-world intelligent systems</strong> from idea to deployment —
-      across finance, healthcare, computer vision, and IoT.
-    </p>
+      <!-- centre glow -->
+      <div class="orb-glow-center"></div>
 
-    <div class="hero-cta" id="h-cta">
-      <a href="#projects" class="btn-p" data-mag>🚀 See My Work</a>
-      <a href="#contact" class="btn-o" data-mag>💬 Let's Talk</a>
-      <a href="https://github.com/harsh0015c" target="_blank" class="btn-o" data-mag>🐙 GitHub</a>
+      <!-- floating skill chips -->
+      <div class="skill-orbit">
+        <div class="orb-chip">🧠 TensorFlow</div>
+        <div class="orb-chip">🔥 PyTorch</div>
+        <div class="orb-chip">👁️ OpenCV</div>
+        <div class="orb-chip">📡 ThingWorx</div>
+        <div class="orb-chip">💬 NLP</div>
+        <div class="orb-chip">🐍 Python</div>
+        <div class="orb-chip">🎯 CNN</div>
+        <div class="orb-chip">☁️ Cloud</div>
+      </div>
     </div>
 
-    <div class="hero-stats" id="h-stats">
-      <div class="stat"><div class="stat-n"><span class="cnt" data-t="6">0</span>+</div><div class="stat-l">AI Projects</div></div>
-      <div class="stat"><div class="stat-n"><span class="cnt" data-t="10">0</span>+</div><div class="stat-l">Certifications</div></div>
-      <div class="stat"><div class="stat-n"><span class="cnt" data-t="25">0</span>%</div><div class="stat-l">Efficiency Gains</div></div>
-      <div class="stat"><div class="stat-n"><span class="cnt" data-t="2">0</span></div><div class="stat-l">Internship Rating ⭐⭐</div></div>
-    </div>
+  </div><!-- /hero-inner -->
+
+  <div class="hero-scroll">
+    <div class="hero-scroll-mouse"><div class="hero-scroll-dot"></div></div>
+    <div class="hero-scroll-label">SCROLL</div>
   </div>
-
-  <div class="hero-scroll"><div class="hero-scroll-mouse"><div class="hero-scroll-dot"></div></div><div class="hero-scroll-label">SCROLL</div></div>
 </section>
 
 <div class="div"></div>
@@ -904,21 +954,147 @@ window.addEventListener('scroll',()=>document.getElementById('nav').classList.to
 
 /* ═══ HERO ENTRANCE ═══ */
 function startHero(){
-  document.getElementById('h-avail').classList.add('in');
-  document.getElementById('h-role').classList.add('in');
-  document.getElementById('h-tag').classList.add('in');
-  document.getElementById('h-cta').classList.add('in');
-  document.getElementById('h-stats').classList.add('in');
-  // Animate HARSH
-  const harsh='HARSH',chaud='CHAUDHARY';
-  const nh=document.getElementById('nm-harsh'),nc=document.getElementById('nm-chaud');
-  nh.innerHTML=harsh.split('').map((ch,i)=>`<span class="sl" style="transition-delay:${.15+i*.07}s">${ch}</span>`).join('');
-  nc.innerHTML=chaud.split('').map((ch,i)=>`<span class="sl" style="transition-delay:${.5+i*.06}s">${ch}</span>`).join('');
-  setTimeout(()=>{
-    document.querySelectorAll('.sl').forEach(s=>s.classList.add('in'));
-  },120);
+  ['h-avail','h-role','h-tag','h-cta','h-stats','h-visual'].forEach(id=>{
+    const el=document.getElementById(id); if(el) el.classList.add('in');
+  });
+  const nh=document.getElementById('nm-harsh'), nc=document.getElementById('nm-chaud');
+  if(nh) nh.innerHTML='HARSH'.split('').map((ch,i)=>`<span class="sl" style="transition-delay:${.15+i*.07}s">${ch}</span>`).join('');
+  if(nc) nc.innerHTML='CHAUDHARY'.split('').map((ch,i)=>`<span class="sl" style="transition-delay:${.5+i*.055}s">${ch}</span>`).join('');
+  setTimeout(()=>document.querySelectorAll('.sl').forEach(s=>s.classList.add('in')),120);
   startTypewriter();
+  startOrbCanvas();
   startTerminal();
+}
+
+/* ═══ HOLOGRAPHIC ORB CANVAS ═══ */
+function startOrbCanvas(){
+  const oc=document.getElementById('orb-canvas');
+  if(!oc) return;
+  const wrap=document.getElementById('h-visual');
+  const setSize=()=>{ oc.width=wrap.offsetWidth; oc.height=wrap.offsetHeight; };
+  setSize();
+  window.addEventListener('resize', setSize);
+  const ox=oc.getContext('2d');
+
+  // sphere latitude/longitude point cloud
+  const dots=[];
+  for(let lat=-80;lat<=80;lat+=16){
+    const rowR=Math.cos(lat*Math.PI/180);
+    const steps=Math.max(2,Math.round(rowR*22));
+    for(let i=0;i<steps;i++){
+      dots.push({lat,lon:(360/steps)*i,sz:1.4+Math.random()*.9,spd:.25+Math.random()*.5,ph:Math.random()*Math.PI*2});
+    }
+  }
+
+  // 3 orbiting ellipses
+  const rings=[
+    {tilt:.28, spd:.009, rgb:'0,245,255',   al:.6, ph:0},
+    {tilt:1.15, spd:.006, rgb:'124,58,237', al:.5, ph:1.3},
+    {tilt:1.85, spd:.008, rgb:'16,185,129', al:.4, ph:2.5},
+  ];
+
+  // floating energy sparks
+  const sparks=Array.from({length:32},()=>({
+    a:Math.random()*Math.PI*2,
+    distF:1.05+Math.random()*.4,
+    spd:(Math.random()-.5)*.013,
+    sz:1+Math.random()*1.6,
+    al:Math.random(),
+    rgb:['0,245,255','124,58,237','16,185,129','245,158,11'][Math.floor(Math.random()*4)],
+  }));
+
+  let mox=0,moy=0;
+  wrap.addEventListener('mousemove',e=>{
+    const r=wrap.getBoundingClientRect();
+    mox=(e.clientX-r.left-oc.width/2)/oc.width*.45;
+    moy=(e.clientY-r.top-oc.height/2)/oc.height*.45;
+  });
+  wrap.addEventListener('mouseleave',()=>{mox=0;moy=0});
+
+  let t=0;
+  function drawOrb(){
+    const W=oc.width, H=oc.height;
+    const ccx=W/2, ccy=H/2;
+    const RAD=Math.min(W,H)*.3;
+    ox.clearRect(0,0,W,H);
+    t+=.013;
+
+    // outer halo
+    const halo=ox.createRadialGradient(ccx,ccy,RAD*.5,ccx,ccy,RAD*1.6);
+    halo.addColorStop(0,'rgba(0,245,255,.1)');
+    halo.addColorStop(.45,'rgba(124,58,237,.06)');
+    halo.addColorStop(1,'transparent');
+    ox.fillStyle=halo; ox.beginPath(); ox.arc(ccx,ccy,RAD*1.6,0,Math.PI*2); ox.fill();
+
+    // sphere body gradient
+    const sph=ox.createRadialGradient(ccx-RAD*.3,ccy-RAD*.28,RAD*.04,ccx,ccy,RAD);
+    sph.addColorStop(0,'rgba(0,245,255,.22)');
+    sph.addColorStop(.3,'rgba(124,58,237,.14)');
+    sph.addColorStop(.65,'rgba(16,185,129,.07)');
+    sph.addColorStop(1,'rgba(0,0,20,.0)');
+    ox.fillStyle=sph; ox.beginPath(); ox.arc(ccx,ccy,RAD,0,Math.PI*2); ox.fill();
+
+    // sphere border
+    ox.beginPath(); ox.arc(ccx,ccy,RAD,0,Math.PI*2);
+    ox.strokeStyle='rgba(0,245,255,.2)'; ox.lineWidth=1.2; ox.stroke();
+
+    // orbiting rings
+    rings.forEach(rng=>{
+      rng.ph+=rng.spd;
+      ox.save(); ox.translate(ccx,ccy); ox.rotate(rng.tilt+mox*.6);
+      const sc=Math.abs(Math.sin(rng.tilt+moy*.6))*.55+.35;
+      ox.scale(1,sc);
+      const rv=Math.cos(rng.ph);
+      ox.beginPath(); ox.ellipse(0,0,RAD*1.12,RAD*.16*Math.abs(rv)+RAD*.03,0,0,Math.PI*2);
+      ox.shadowColor=`rgba(${rng.rgb},.7)`; ox.shadowBlur=10;
+      ox.strokeStyle=`rgba(${rng.rgb},${rng.al*Math.abs(rv)})`; ox.lineWidth=1.8; ox.stroke();
+      ox.restore();
+    });
+    ox.shadowBlur=0;
+
+    // lat/lon point cloud
+    dots.forEach(d=>{
+      d.lon+=d.spd*.35;
+      const phi=(d.lat)*Math.PI/180;
+      const theta=(d.lon+t*14)*Math.PI/180;
+      const cp=Math.cos(phi),sp=Math.sin(phi),ct=Math.cos(theta),st=Math.sin(theta);
+      const x3=RAD*cp*ct, y3=RAD*sp, z3=RAD*cp*st;
+      const zOff=z3+RAD*1.6;
+      const sc2=RAD*1.6/zOff;
+      const sx=ccx+x3*sc2*(1+mox*.25);
+      const sy=ccy+y3*sc2*(1+moy*.25);
+      const br=(z3+RAD)/(2*RAD);
+      ox.beginPath(); ox.arc(sx,sy,d.sz*sc2*.9,0,Math.PI*2);
+      ox.fillStyle=`rgba(0,245,255,${br*.65+.08})`; ox.fill();
+    });
+
+    // energy sparks
+    sparks.forEach(sp=>{
+      sp.a+=sp.spd; sp.al+=.038; if(sp.al>1) sp.al=0;
+      const sx=ccx+Math.cos(sp.a)*RAD*sp.distF;
+      const sy=ccy+Math.sin(sp.a)*RAD*sp.distF*.58;
+      const alv=Math.sin(sp.al*Math.PI)*.75;
+      ox.beginPath(); ox.arc(sx,sy,sp.sz,0,Math.PI*2);
+      ox.fillStyle=`rgba(${sp.rgb},${alv})`; ox.fill();
+    });
+
+    // specular highlight
+    const hi=ox.createRadialGradient(ccx-RAD*.24,ccy-RAD*.24,0,ccx,ccy,RAD*.52);
+    hi.addColorStop(0,'rgba(255,255,255,.18)'); hi.addColorStop(1,'transparent');
+    ox.fillStyle=hi; ox.beginPath(); ox.arc(ccx,ccy,RAD,0,Math.PI*2); ox.fill();
+
+    // scan line sweep
+    const sy2=ccy-RAD+((t*70)%(RAD*2));
+    if(sy2>ccy-RAD && sy2<ccy+RAD){
+      const hw=Math.sqrt(Math.max(0,RAD*RAD-(sy2-ccy)**2));
+      const sg=ox.createLinearGradient(ccx-hw,sy2,ccx+hw,sy2);
+      sg.addColorStop(0,'transparent'); sg.addColorStop(.5,'rgba(0,245,255,.28)'); sg.addColorStop(1,'transparent');
+      ox.fillStyle=sg; ox.fillRect(ccx-hw,sy2-1,hw*2,2);
+    }
+
+    requestAnimationFrame(drawOrb);
+  }
+  drawOrb();
 }
 
 /* ═══ TYPEWRITER ═══ */
@@ -1073,10 +1249,12 @@ window.addEventListener('scroll',()=>{
 /* ═══ HERO PARALLAX ═══ */
 window.addEventListener('scroll',()=>{
   const y=scrollY;
-  const hc=document.querySelector('.hero-content');
+  const hi=document.querySelector('.hero-inner');
   const bg=document.querySelector('.hero-bg-name');
-  if(hc)hc.style.transform=`translateY(${y*.12}px)`;
-  if(bg)bg.style.transform=`translate(-50%,calc(-50% + ${y*.06}px)) scale(${1+y*.0003})`;
+  const vis=document.getElementById('h-visual');
+  if(hi) hi.style.transform=`translateY(${y*.07}px)`;
+  if(bg) bg.style.transform=`translate(-50%,calc(-50% + ${y*.05}px)) scale(${1+y*.0002})`;
+  if(vis) vis.style.transform=`translateY(${-y*.04}px) scale(${vis.classList.contains('in')?1:.85})`;
 });
 
 /* ═══ EMAILJS ═══ */
